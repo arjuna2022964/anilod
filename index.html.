@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080510">
+<title>ANILOD — Beyond the World of Anime</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;700&display=swap');
+:root{--bg:#080510;--panel:#130d20;--purple:#a855f7;--pink:#e879f9;--text:#f5edff;--muted:#a99bb8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+#intro{position:fixed;inset:0;z-index:20;background:radial-gradient(circle,#35105b,#080510 65%);display:flex;align-items:center;justify-content:center;text-align:center;transition:opacity .8s}
+.portal{width:190px;height:190px;border:3px solid #c084fc;border-radius:50%;box-shadow:0 0 25px #a855f7,0 0 80px #9333ea,inset 0 0 35px #a855f7;animation:portal 2s infinite alternate;margin:0 auto 25px}
+@keyframes portal{to{transform:scale(1.12);box-shadow:0 0 55px #e879f9,0 0 110px #9333ea}}
+.logo{font-family:Orbitron,sans-serif;letter-spacing:5px;color:#e9c5ff;text-shadow:0 0 20px #a855f7}
+.introline{color:#d8b4fe;letter-spacing:4px;font-size:12px;margin:15px}
+.btn{border:1px solid #a855f7;background:linear-gradient(120deg,#6b21a8,#a21caf);color:white;padding:11px 18px;border-radius:9px;font-weight:bold}
+.btn.secondary{background:#21152e}
+header{position:sticky;top:0;z-index:5;background:#0c0714ed;backdrop-filter:blur(12px);border-bottom:1px solid #352044;padding:13px 16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{font-family:Orbitron,sans-serif;font-size:21px;letter-spacing:3px;color:#d8b4fe}
+nav{display:flex;gap:8px;overflow-x:auto;padding-top:14px}
+nav button{white-space:nowrap;background:#1b1128;color:#cbb9dc;border:1px solid #39264c;padding:9px 13px;border-radius:20px}
+nav button.active,nav button:hover{background:#7e22ce;color:white}
+main{max-width:1050px;margin:auto;padding:20px 15px 100px}
+section{display:none}
+section.active{display:block}
+.hero{min-height:270px;padding:35px 22px;border:1px solid #5b267f;border-radius:18px;background:radial-gradient(circle at 80% 20%,#7024a5 0,#241039 35%,#10091b 75%);display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.hero h1{font:800 clamp(30px,7vw,54px) Orbitron,sans-serif;margin:10px 0;text-shadow:0 0 22px #a855f7}
+.hero p{color:#ddcce9;max-width:500px;line-height:1.7}
+.tag{color:#d8b4fe;letter-spacing:3px;font-size:11px}
+h2{font:700 24px Rajdhani,sans-serif;letter-spacing:1px}
+h3{font:700 19px Rajdhani,sans-serif;margin:10px 0}
+.muted{color:var(--muted);font-size:13px;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:13px}
+.card{background:var(--panel);border:1px solid #30203e;border-radius:13px;overflow:hidden;padding:12px}
+.poster{height:145px;border-radius:9px;background:linear-gradient(145deg,#5b21b6,#160d25 70%);display:grid;place-items:center;font-size:42px}
+.card p{font-size:12px;color:var(--muted)}
+.card button{margin:4px 3px 0 0}
+.search{width:100%;padding:13px;border:1px solid #50336a;border-radius:10px;background:#130d20;color:white;margin:10px 0 18px}
+.panel{background:var(--panel);border:1px solid #382447;border-radius:14px;padding:17px;margin:15px 0}
+input,textarea{width:100%;background:#0c0714;border:1px solid #49305d;color:white;padding:12px;border-radius:9px;margin:7px 0}
+textarea{min-height:90px;resize:vertical}
+.stat{font:700 26px Orbitron;color:#d8b4fe}
+footer{text-align:center;border-top:1px solid #30203e;padding:25px;color:#8e7c9e;font-size:12px}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#6b21a8;padding:12px 18px;border-radius:20px;display:none;z-index:30}
+@media(min-width:700px){.hero{padding:55px}.poster{height:180px}}
+</style>
+</head>
+<body>
+
+<div id="intro">
+ <div>
+  <div class="portal"></div>
+  <h1 class="logo">ANILOD</h1>
+  <div class="introline">BEYOND THE WORLD OF ANIME</div>
+  <button class="btn" onclick="enterSite()">ENTER THE WORLD</button>
+  <p><button class="btn secondary" onclick="enterSite()">SKIP INTRO</button></p>
+ </div>
+</div>
+
+<header>
+ <div class="top">
+  <div class="brand">ANILOD</div>
+  <span class="tag">紫影</span>
+ </div>
+ <nav id="nav">
+  <button class="active" onclick="showPage('home',this)">⌂ Home</button>
+  <button onclick="showPage('anime',this)">◈ Anime</button>
+  <button onclick="showPage('games',this)">🎮 Games</button>
+  <button onclick="showPage('explore',this)">⌕ Explore</button>
+  <button onclick="showPage('creator',this)">✦ Creator Hub</button>
+  <button onclick="showPage('world',this)">🌌 World</button>
+  <button onclick="showPage('profile',this)">👤 Profile</button>
+ </nav>
+</header>
+
+<main>
+<section id="home" class="active">
+ <div class="hero">
+  <div class="tag">WELCOME TO A NEW UNIVERSE</div>
+  <h1>YOUR ANIME<br>UNIVERSE.</h1>
+  <p>Watch. Play. Create. Explore. Discover a world built for anime fans.</p>
+  <div><button class="btn" onclick="showPage('anime')">Explore Anime</button>
+  <button class="btn secondary" onclick="showPage('world')">Enter ANILOD World</button></div>
+ </div>
+ <h2>✦ Featured Universe</h2>
+ <div class="grid">
+  <div class="card"><div class="poster">⚔️</div><h3>Anime Zone</h3><p>Discover anime worlds and characters.</p><button class="btn" onclick="showPage('anime')">Explore</button></div>
+  <div class="card"><div class="poster">🎮</div><h3>Game Zone</h3><p>Play quizzes and challenges.</p><button class="btn" onclick="showPage('games')">Play</button></div>
+  <div class="card"><div class="poster">✍️</div><h3>Creator Hub</h3><p>Share your own creations.</p><button class="btn" onclick="showPage('creator')">Create</button></div>
+ </div>
+ <div class="panel"><div class="tag">TODAY'S MESSAGE</div><h2>YOUR STORY STARTS HERE.</h2><p class="muted">Every creator starts with an idea. Make yours count.</p></div>
+</section>
+
+<section id="anime">
+ <h2>◈ Anime Discovery</h2>
+ <p class="muted">Explore popular anime titles. Availability depends on your region and official streaming services.</p>
+ <input class="search" id="animeSearch" placeholder="Search anime..." oninput="filterAnime()">
+ <div class="grid" id="animeGrid"></div>
+ <p class="muted">ANILOD does not host anime episodes. Find legal viewing options through official services.</p>
+</section>
+
+<section id="games">
+ <h2>🎮 Game Zone</h2>
+ <div class="panel">
+  <div class="tag">ANIME KNOWLEDGE CHALLENGE</div>
+  <h3 id="question">Which anime features a character named Naruto?</h3>
+  <div id="answers"></div>
+  <p id="quizResult" class="muted">Choose your answer to earn XP.</p>
+  <p>Score: <span class="stat" id="score">0</span></p>
+ </div>
+ <div class="panel"><h3>Daily Quest</h3><p class="muted">Explore one section of ANILOD today.</p><button class="btn" onclick="completeQuest()">Complete Quest (+10 XP)</button><p id="questStatus" class="muted"></p></div>
+</section>
+
+<section id="explore">
+ <h2>⌕ Explore the Anime Universe</h2>
+ <p class="muted">Search for anime information using an external search engine.</p>
+ <input id="exploreSearch" placeholder="Enter anime name...">
+ <button class="btn" onclick="searchWeb()">Search the Web</button>
+ <div class="panel"><h3>Explore ideas</h3><p class="muted">Anime characters · Manga · Anime news · Fan theories · Art inspiration</p></div>
+</section>
+
+<section id="creator">
+ <h2>✦ Creator Hub</h2>
+ <p class="muted">Share your own stories, artwork and creative ideas.</p>
+ <div class="panel">
+  <h3>Create a post</h3>
+  <input id="creatorName" placeholder="Your creator name">
+  <input id="postTitle" placeholder="Post title">
+  <textarea id="postText" placeholder="Write your original story or describe your artwork..."></textarea>
+  <button class="btn" onclick="publishPost()">Publish locally</button>
+  <p class="muted">This demo saves posts only in this browser. Public sharing needs a secure backend.</p>
+ </div>
+ <h2>Community Creations</h2>
+ <div id="posts"></div>
+</section>
+
+<section id="world">
+ <div class="hero"><div class="tag">WELCOME, EXPLORER</div><h1>ANILOD<br>WORLD</h1><p>Build your creative journey. Complete quests and collect experience.</p></div>
+ <div class="grid">
+  <div class="panel"><p class="muted">YOUR XP</p><div class="stat" id="xp">0</div></div>
+  <div class="panel"><p class="muted">YOUR LEVEL</p><div class="stat" id="level">1</div></div>
+ </div>
+ <div class="panel"><h3>Mission Board</h3><p class="muted">Visit the Anime section and discover a new title.</p><button class="btn" onclick="showPage('anime')">Start mission</button></div>
+ <div class="panel"><h3>Coming Soon</h3><p class="muted">Avatar creator · Guilds · Multiplayer challenges · Achievements</p></div>
+</section>
+
+<section id="profile">
+ <h2>👤 Your Profile</h2>
+ <div class="panel">
+  <div class="poster">🌌</div>
+  <input id="profileName" placeholder="Enter your username">
+  <textarea id="profileBio" placeholder="Your anime universe bio"></textarea>
+  <button class="btn" onclick="saveProfile()">Save Profile</button>
+  <p class="muted" id="profileStatus">Your demo profile is stored on this device only.</p>
+ </div>
+ <div class="panel"><h3>Your Journey</h3><p>XP: <b id="profileXP">0</b></p><p>Level: <b id="profileLevel">1</b></p><p>Favourites: <b id="favCount">0</b></p></div>
+</section>
+</main>
+
+<footer>
+ <div class="brand">ANILOD</div>
+ <p>BEYOND THE WORLD OF ANIME</p>
+ <p>WATCH • PLAY • CREATE • EXPLORE</p>
+ <p>Made for anime fans. Respect creators and copyright.</p>
+</footer>
+<div id="toast"></div>
+
+<script>
+const titles=[
+ {name:"Naruto",genre:"Adventure",emoji:"🍥"},
+ {name:"One Piece",genre:"Adventure",emoji:"🏴‍☠️"},
+ {name:"Dragon Ball",genre:"Action",emoji:"🐉"},
+ {name:"Demon Slayer",genre:"Action",emoji:"⚔️"},
+ {name:"Jujutsu Kaisen",genre:"Fantasy",emoji:"👁️"},
+ {name:"Black Clover",genre:"Fantasy",emoji:"🍀"},
+ {name:"Attack on Titan",genre:"Action",emoji:"🪽"},
+ {name:"My Hero Academia",genre:"Superhero",emoji:"💥"}
+];
+let xp=Number(localStorage.getItem("anilodXP")||0);
+let score=Number(localStorage.getItem("anilodScore")||0);
+let favourites=JSON.parse(localStorage.getItem("anilodFavs")||"[]");
+let posts=JSON.parse(localStorage.getItem("anilodPosts")||"[]");
+let quizIndex=0;
+const questions=[
+ {q:"Which anime features Naruto?",a:["One Piece","Naruto","Bleach"],correct:1},
+ {q:"Which character is known as the Pirate King in the making?",a:["Luffy","Goku","Asta"],correct:0},
+ {q:"Which anime features a notebook with supernatural powers?",a:["Death Note","Haikyuu","Blue Lock"],correct:0},
+ {q:"Which anime features a character named Asta?",a:["Black Clover","Naruto","One Piece"],correct:0}
+];
+function enterSite(){document.getElementById("intro").style.opacity="0";setTimeout(()=>document.getElementById("intro").style.display="none",800);sessionStorage.setItem("anilodEntered","yes")}
+if(sessionStorage.getItem("anilodEntered"))document.getElementById("intro").style.display="none";
+function showPage(id,button){
+ document.querySelectorAll("main section").forEach(s=>s.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+ if(button)button.classList.add("active");
+ window.scrollTo(0,0);updateStats();
+}
+function toast(msg){let t=document.getElementById("toast");t.textContent=msg;t.style.display="block";setTimeout(()=>t.style.display="none",2200)}
+function renderAnime(list=titles){
+ document.getElementById("animeGrid").innerHTML=list.map(a=>`
+ <div class="card"><div class="poster">${a.emoji}</div><h3>${a.name}</h3><p>${a.genre}</p>
+ <button class="btn" onclick="toggleFav('${a.name}')">${favourites.includes(a.name)?"★ Saved":"☆ Favourite"}</button></div>`).join("")||"<p>No titles found.</p>";
+}
+function filterAnime(){let q=document.getElementById("animeSearch").value.toLowerCase();renderAnime(titles.filter(a=>a.name.toLowerCase().includes(q)||a.genre.toLowerCase().includes(q)))}
+function toggleFav(name){favourites=favourites.includes(name)?favourites.filter(x=>x!==name):[...favourites,name];localStorage.setItem("anilodFavs",JSON.stringify(favourites));filterAnime();updateStats();toast("Favourite list updated")}
+function updateStats(){
+ document.getElementById("xp").textContent=xp;
+ document.getElementById("level").textContent=Math.floor(xp/100)+1;
+ document.getElementById("score").textContent=score;
+ document.getElementById("profileXP").textContent=xp;
+ document.getElementById("profileLevel").textContent=Math.floor(xp/100)+1;
+ document.getElementById("favCount").textContent=favourites.length;
+}
+function loadQuestion(){
+ let q=questions[quizIndex%questions.length];
+ document.getElementById("question").textContent=q.q;
+ document.getElementById("answers").innerHTML=q.a.map((a,i)=>`<button class="btn secondary" style="margin:4px" onclick="answer(${i})">${a}</button>`).join("");
+}
+function answer(i){
+ let q=questions[quizIndex%questions.length];
+ if(i===q.correct){score++;xp+=10;localStorage.setItem("anilodScore",score);localStorage.setItem("anilodXP",xp);document.getElementById("quizResult").textContent="Correct! +10 XP";}
+ else document.getElementById("quizResult").textContent="Not quite! Try the next question.";
+ quizIndex++;loadQuestion();updateStats();
+}
+function completeQuest(){
+ if(localStorage.getItem("anilodQuest")===new Date().toDateString()){toast("Quest already completed today!");return}
+ xp+=10;localStorage.setItem("anilodXP",xp);localStorage.setItem("anilodQuest",new Date().toDateString());document.getElementById("questStatus").textContent="Quest completed! +10 XP";updateStats();
+}
+function searchWeb(){
+ let q=document.getElementById("exploreSearch").value.trim();
+ if(q)window.open("https://www.google.com/search?q="+encodeURIComponent(q+" anime"),"_blank");
+}
+function publishPost(){
+ let name=document.getElementById("creatorName").value.trim();
+ let title=document.getElementById("postTitle").value.trim();
+ let body=document.getElementById("postText").value.trim();
+ if(!name||!title||!body){toast("Fill in all fields first");return}
+ posts.unshift({name,title,body});
+ localStorage.setItem("anilodPosts",JSON.stringify(posts));
+ document.getElementById("postTitle").value="";
+ document.getElementById("postText").value="";
+ renderPosts();toast("Your post was saved on this device!");
+}
+function renderPosts(){
+ document.getElementById("posts").innerHTML=posts.map(p=>`<div class="panel"><div class="tag">${escapeText(p.name)}</div><h3>${escapeText(p.title)}</h3><p class="muted">${escapeText(p.body)}</p></div>`).join("")||'<p class="muted">No posts yet. Be the first creator!</p>';
+}
+function escapeText(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function saveProfile(){
+ localStorage.setItem("anilodName",document.getElementById("profileName").value);
+ localStorage.setItem("anilodBio",document.getElementById("profileBio").value);
+ document.getElementById("profileStatus").textContent="Profile saved on this device!";
+}
+document.getElementById("profileName").value=localStorage.getItem("anilodName")||"";
+document.getElementById("profileBio").value=localStorage.getItem("anilodBio")||"";
+renderAnime();renderPosts();loadQuestion();updateStats();
+</script>
+</body>
+</html>
