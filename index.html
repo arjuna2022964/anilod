@@ -1,265 +1,360 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080510">
-<title>ANILOD — Beyond the World of Anime</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090710">
+<title>ANILOD — Anime Universe</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;700&display=swap');
-:root{--bg:#080510;--panel:#130d20;--purple:#a855f7;--pink:#e879f9;--text:#f5edff;--muted:#a99bb8}
+:root{--bg:#090710;--card:#171321;--line:#382843;--red:#ff563f;--purple:#b35cff;--text:#fff;--muted:#b5a8c2}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}
-button,input,textarea{font:inherit}
-button{cursor:pointer}
-#intro{position:fixed;inset:0;z-index:20;background:radial-gradient(circle,#35105b,#080510 65%);display:flex;align-items:center;justify-content:center;text-align:center;transition:opacity .8s}
-.portal{width:190px;height:190px;border:3px solid #c084fc;border-radius:50%;box-shadow:0 0 25px #a855f7,0 0 80px #9333ea,inset 0 0 35px #a855f7;animation:portal 2s infinite alternate;margin:0 auto 25px}
-@keyframes portal{to{transform:scale(1.12);box-shadow:0 0 55px #e879f9,0 0 110px #9333ea}}
-.logo{font-family:Orbitron,sans-serif;letter-spacing:5px;color:#e9c5ff;text-shadow:0 0 20px #a855f7}
-.introline{color:#d8b4fe;letter-spacing:4px;font-size:12px;margin:15px}
-.btn{border:1px solid #a855f7;background:linear-gradient(120deg,#6b21a8,#a21caf);color:white;padding:11px 18px;border-radius:9px;font-weight:bold}
-.btn.secondary{background:#21152e}
-header{position:sticky;top:0;z-index:5;background:#0c0714ed;backdrop-filter:blur(12px);border-bottom:1px solid #352044;padding:13px 16px}
-.top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.brand{font-family:Orbitron,sans-serif;font-size:21px;letter-spacing:3px;color:#d8b4fe}
-nav{display:flex;gap:8px;overflow-x:auto;padding-top:14px}
-nav button{white-space:nowrap;background:#1b1128;color:#cbb9dc;border:1px solid #39264c;padding:9px 13px;border-radius:20px}
-nav button.active,nav button:hover{background:#7e22ce;color:white}
-main{max-width:1050px;margin:auto;padding:20px 15px 100px}
-section{display:none}
-section.active{display:block}
-.hero{min-height:270px;padding:35px 22px;border:1px solid #5b267f;border-radius:18px;background:radial-gradient(circle at 80% 20%,#7024a5 0,#241039 35%,#10091b 75%);display:flex;flex-direction:column;justify-content:center;overflow:hidden}
-.hero h1{font:800 clamp(30px,7vw,54px) Orbitron,sans-serif;margin:10px 0;text-shadow:0 0 22px #a855f7}
-.hero p{color:#ddcce9;max-width:500px;line-height:1.7}
-.tag{color:#d8b4fe;letter-spacing:3px;font-size:11px}
-h2{font:700 24px Rajdhani,sans-serif;letter-spacing:1px}
-h3{font:700 19px Rajdhani,sans-serif;margin:10px 0}
-.muted{color:var(--muted);font-size:13px;line-height:1.6}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:13px}
-.card{background:var(--panel);border:1px solid #30203e;border-radius:13px;overflow:hidden;padding:12px}
-.poster{height:145px;border-radius:9px;background:linear-gradient(145deg,#5b21b6,#160d25 70%);display:grid;place-items:center;font-size:42px}
-.card p{font-size:12px;color:var(--muted)}
-.card button{margin:4px 3px 0 0}
-.search{width:100%;padding:13px;border:1px solid #50336a;border-radius:10px;background:#130d20;color:white;margin:10px 0 18px}
-.panel{background:var(--panel);border:1px solid #382447;border-radius:14px;padding:17px;margin:15px 0}
-input,textarea{width:100%;background:#0c0714;border:1px solid #49305d;color:white;padding:12px;border-radius:9px;margin:7px 0}
-textarea{min-height:90px;resize:vertical}
-.stat{font:700 26px Orbitron;color:#d8b4fe}
-footer{text-align:center;border-top:1px solid #30203e;padding:25px;color:#8e7c9e;font-size:12px}
-#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#6b21a8;padding:12px 18px;border-radius:20px;display:none;z-index:30}
-@media(min-width:700px){.hero{padding:55px}.poster{height:180px}}
+body{margin:0;background:radial-gradient(circle at top right,#421440,transparent 40%),var(--bg);color:var(--text);font:15px Arial,sans-serif}
+header{position:sticky;top:0;background:#090710ee;backdrop-filter:blur(15px);padding:14px;border-bottom:1px solid var(--line);z-index:5}
+.brand{font-size:25px;font-weight:900;letter-spacing:4px}.brand span{color:var(--red)}
+nav{display:flex;gap:7px;overflow:auto;margin-top:12px}
+button{background:#291d35;color:white;border:1px solid var(--line);border-radius:12px;padding:10px 13px;cursor:pointer}
+button:hover,.active{border-color:var(--red);background:#542343}
+main{max-width:1100px;margin:auto;padding:18px}
+.page{display:none}.page.active{display:block}
+.hero{padding:35px 22px;border:1px solid #713454;border-radius:23px;background:linear-gradient(130deg,#21102c,#581b42,#19101f);min-height:300px}
+.hero h1{font-size:clamp(42px,9vw,75px);margin:15px 0;line-height:1}
+.hero h1 span{color:#ff694e}
+.hero p{color:#e0d1e7;max-width:550px;line-height:1.6}
+h2{margin-top:28px}
+.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:13px;margin-top:15px}
+.card,.panel{background:var(--card);border:1px solid var(--line);border-radius:15px;overflow:hidden}
+.card img{width:100%;aspect-ratio:3/4;object-fit:cover;background:#24192e}
+.card div{padding:10px}.card h3{font-size:14px;margin:0 0 8px}
+input,textarea,select{width:100%;padding:12px;background:#0d0b14;color:white;border:1px solid var(--line);border-radius:11px;margin:7px 0}
+textarea{min-height:100px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.row input{flex:1;min-width:150px}
+.panel{padding:16px;margin:12px 0}
+.detail{display:flex;gap:15px;flex-wrap:wrap}
+.detail img{width:125px;max-width:35%;border-radius:12px}
+a{color:#ff9c84}
+.small{font-size:12px;color:var(--muted)}
+#chatlog{height:300px;overflow:auto;background:#0d0b14;border:1px solid var(--line);border-radius:13px;padding:10px}
+.msg{padding:10px;margin:7px 0;border-radius:12px;background:#30203d;white-space:pre-wrap}
+.msg.user{background:#552044;text-align:right}
+footer{text-align:center;color:var(--muted);padding:35px 10px;font-size:12px}
 </style>
 </head>
 <body>
-
-<div id="intro">
- <div>
-  <div class="portal"></div>
-  <h1 class="logo">ANILOD</h1>
-  <div class="introline">BEYOND THE WORLD OF ANIME</div>
-  <button class="btn" onclick="enterSite()">ENTER THE WORLD</button>
-  <p><button class="btn secondary" onclick="enterSite()">SKIP INTRO</button></p>
- </div>
-</div>
-
 <header>
- <div class="top">
-  <div class="brand">ANILOD</div>
-  <span class="tag">紫影</span>
- </div>
- <nav id="nav">
-  <button class="active" onclick="showPage('home',this)">⌂ Home</button>
-  <button onclick="showPage('anime',this)">◈ Anime</button>
-  <button onclick="showPage('games',this)">🎮 Games</button>
-  <button onclick="showPage('explore',this)">⌕ Explore</button>
-  <button onclick="showPage('creator',this)">✦ Creator Hub</button>
-  <button onclick="showPage('world',this)">🌌 World</button>
-  <button onclick="showPage('profile',this)">👤 Profile</button>
+ <div class="brand">ANI<span>LOD</span></div>
+ <div class="small">YOUR ANIME UNIVERSE</div>
+ <nav>
+  <button class="active" onclick="go('home',this)">⌂ Home</button>
+  <button onclick="go('discover',this)">◈ Discover</button>
+  <button onclick="go('watch',this)">▶ Watch</button>
+  <button onclick="go('games',this)">♟ Games</button>
+  <button onclick="go('creator',this)">✎ Creator</button>
+  <button onclick="go('alya',this)">✦ ALYA AI</button>
+  <button onclick="go('profile',this)">◉ Profile</button>
  </nav>
 </header>
 
 <main>
-<section id="home" class="active">
+<section id="home" class="page active">
  <div class="hero">
-  <div class="tag">WELCOME TO A NEW UNIVERSE</div>
-  <h1>YOUR ANIME<br>UNIVERSE.</h1>
-  <p>Watch. Play. Create. Explore. Discover a world built for anime fans.</p>
-  <div><button class="btn" onclick="showPage('anime')">Explore Anime</button>
-  <button class="btn secondary" onclick="showPage('world')">Enter ANILOD World</button></div>
+  <div class="small">ONE WORLD. INFINITE STORIES.</div>
+  <h1>WELCOME TO<br><span>ANILOD.</span></h1>
+  <p>Discover anime, build your watchlist, play games, create posts and explore your anime universe.</p>
+  <button onclick="go('discover')">Explore Anime ↗</button>
+  <button onclick="go('alya')">Meet ALYA ✦</button>
+  <p class="small">Your saved anime: <b id="count">0</b></p>
  </div>
- <h2>✦ Featured Universe</h2>
- <div class="grid">
-  <div class="card"><div class="poster">⚔️</div><h3>Anime Zone</h3><p>Discover anime worlds and characters.</p><button class="btn" onclick="showPage('anime')">Explore</button></div>
-  <div class="card"><div class="poster">🎮</div><h3>Game Zone</h3><p>Play quizzes and challenges.</p><button class="btn" onclick="showPage('games')">Play</button></div>
-  <div class="card"><div class="poster">✍️</div><h3>Creator Hub</h3><p>Share your own creations.</p><button class="btn" onclick="showPage('creator')">Create</button></div>
- </div>
- <div class="panel"><div class="tag">TODAY'S MESSAGE</div><h2>YOUR STORY STARTS HERE.</h2><p class="muted">Every creator starts with an idea. Make yours count.</p></div>
+ <h2>🔥 Trending Anime</h2>
+ <div id="trending" class="grid">Loading anime...</div>
+ <h2>⭐ My Watchlist</h2>
+ <div id="saved" class="grid">No saved anime yet.</div>
 </section>
 
-<section id="anime">
- <h2>◈ Anime Discovery</h2>
- <p class="muted">Explore popular anime titles. Availability depends on your region and official streaming services.</p>
- <input class="search" id="animeSearch" placeholder="Search anime..." oninput="filterAnime()">
- <div class="grid" id="animeGrid"></div>
- <p class="muted">ANILOD does not host anime episodes. Find legal viewing options through official services.</p>
+<section id="discover" class="page">
+ <h1>Discover Anime</h1>
+ <p class="muted">Explore the public AniList anime catalogue.</p>
+ <div class="row">
+  <input id="search" placeholder="Search Naruto, One Piece, Asta...">
+  <button onclick="searchAnime()">Search</button>
+ </div>
+ <div class="row">
+  <button onclick="popular()">Trending</button>
+  <button onclick="airing()">Currently Airing</button>
+  <button onclick="showSaved()">My Watchlist</button>
+ </div>
+ <div id="results" class="grid"></div>
+ <div id="details"></div>
 </section>
 
-<section id="games">
- <h2>🎮 Game Zone</h2>
+<section id="watch" class="page">
+ <h1>▶ Watch Zone</h1>
  <div class="panel">
-  <div class="tag">ANIME KNOWLEDGE CHALLENGE</div>
-  <h3 id="question">Which anime features a character named Naruto?</h3>
-  <div id="answers"></div>
-  <p id="quizResult" class="muted">Choose your answer to earn XP.</p>
-  <p>Score: <span class="stat" id="score">0</span></p>
+  <h3>Official Anime Platforms</h3>
+  <p><a href="https://www.crunchyroll.com/" target="_blank">Crunchyroll ↗</a></p>
+  <p><a href="https://www.youtube.com/@MuseIndia" target="_blank">Muse India YouTube ↗</a></p>
+  <p><a href="https://www.netflix.com/" target="_blank">Netflix ↗</a></p>
+  <p class="small">Availability depends on your region and subscription.</p>
  </div>
- <div class="panel"><h3>Daily Quest</h3><p class="muted">Explore one section of ANILOD today.</p><button class="btn" onclick="completeQuest()">Complete Quest (+10 XP)</button><p id="questStatus" class="muted"></p></div>
-</section>
-
-<section id="explore">
- <h2>⌕ Explore the Anime Universe</h2>
- <p class="muted">Search for anime information using an external search engine.</p>
- <input id="exploreSearch" placeholder="Enter anime name...">
- <button class="btn" onclick="searchWeb()">Search the Web</button>
- <div class="panel"><h3>Explore ideas</h3><p class="muted">Anime characters · Manga · Anime news · Fan theories · Art inspiration</p></div>
-</section>
-
-<section id="creator">
- <h2>✦ Creator Hub</h2>
- <p class="muted">Share your own stories, artwork and creative ideas.</p>
  <div class="panel">
-  <h3>Create a post</h3>
-  <input id="creatorName" placeholder="Your creator name">
+  <h3>Play your own video</h3>
+  <p class="small">Use a video URL you own or are authorised to watch.</p>
+  <input id="videoURL" placeholder="Paste authorised video URL">
+  <button onclick="playVideo()">Play Video</button>
+  <video id="player" controls style="width:100%;display:none;margin-top:12px"></video>
+ </div>
+</section>
+
+<section id="games" class="page">
+ <h1>♟ Anime Games</h1>
+ <div class="panel">
+  <h2>Anime Quiz</h2>
+  <h3 id="question">Which village is Naruto from?</h3>
+  <div id="options"></div>
+  <p id="quizResult"></p>
+  <p>Score: <b id="score">0</b></p>
+  <button onclick="nextQuestion()">Next Question</button>
+ </div>
+ <div class="panel">
+  <h2>⚔ Random Character Draft</h2>
+  <div id="draft">Your first character awaits...</div>
+  <button onclick="draft()">Choose Character</button>
+  <button onclick="resetDraft()">Reset</button>
+  <div id="team"></div>
+ </div>
+ <div class="panel">
+  <h2>More Games</h2>
+  <a href="https://poki.com/" target="_blank">Play browser games ↗</a>
+ </div>
+</section>
+
+<section id="creator" class="page">
+ <h1>✎ Creator Hub</h1>
+ <p class="muted">Create your own posts. They are saved on this device.</p>
+ <div class="panel">
   <input id="postTitle" placeholder="Post title">
-  <textarea id="postText" placeholder="Write your original story or describe your artwork..."></textarea>
-  <button class="btn" onclick="publishPost()">Publish locally</button>
-  <p class="muted">This demo saves posts only in this browser. Public sharing needs a secure backend.</p>
+  <textarea id="postBody" placeholder="Write something..."></textarea>
+  <button onclick="addPost()">Publish Post</button>
  </div>
- <h2>Community Creations</h2>
+ <h2>Your Posts</h2>
  <div id="posts"></div>
 </section>
 
-<section id="world">
- <div class="hero"><div class="tag">WELCOME, EXPLORER</div><h1>ANILOD<br>WORLD</h1><p>Build your creative journey. Complete quests and collect experience.</p></div>
- <div class="grid">
-  <div class="panel"><p class="muted">YOUR XP</p><div class="stat" id="xp">0</div></div>
-  <div class="panel"><p class="muted">YOUR LEVEL</p><div class="stat" id="level">1</div></div>
+<section id="alya" class="page">
+ <h1>✦ ALYA AI</h1>
+ <p class="muted">Your anime, coding and learning assistant.</p>
+ <div class="panel">
+  <label>Choose Mode</label>
+  <select id="mode">
+   <option>General</option>
+   <option>Anime</option>
+   <option>Coding</option>
+   <option>Agent Planner</option>
+  </select>
+  <p id="aiStatus" class="small">AI backend not connected.</p>
+  <div id="chatlog">
+   <div class="msg">Hello! I'm ALYA. What would you like to explore today?</div>
+  </div>
+  <div class="row">
+   <input id="chatInput" placeholder="Message ALYA..." onkeydown="if(event.key==='Enter')send()">
+   <button onclick="send()">Send</button>
+  </div>
+  <button onclick="voice()">🎤 Voice Input</button>
+  <button onclick="clearChat()">Clear Chat</button>
+  <button onclick="settings()">⚙ Settings</button>
  </div>
- <div class="panel"><h3>Mission Board</h3><p class="muted">Visit the Anime section and discover a new title.</p><button class="btn" onclick="showPage('anime')">Start mission</button></div>
- <div class="panel"><h3>Coming Soon</h3><p class="muted">Avatar creator · Guilds · Multiplayer challenges · Achievements</p></div>
+ <div class="panel">
+  <h3>Connect ALYA AI</h3>
+  <p class="small">Real AI needs a secure backend. Never put your private API key in this website.</p>
+  <input id="workerURL" placeholder="Your secure backend HTTPS URL">
+  <button onclick="saveWorker()">Save Backend URL</button>
+ </div>
 </section>
 
-<section id="profile">
- <h2>👤 Your Profile</h2>
+<section id="profile" class="page">
+ <h1>◉ My Profile</h1>
  <div class="panel">
-  <div class="poster">🌌</div>
-  <input id="profileName" placeholder="Enter your username">
-  <textarea id="profileBio" placeholder="Your anime universe bio"></textarea>
-  <button class="btn" onclick="saveProfile()">Save Profile</button>
-  <p class="muted" id="profileStatus">Your demo profile is stored on this device only.</p>
+  <input id="name" placeholder="Your name">
+  <textarea id="bio" placeholder="About you..."></textarea>
+  <button onclick="saveProfile()">Save Profile</button>
+  <p id="profileStatus" class="small"></p>
  </div>
- <div class="panel"><h3>Your Journey</h3><p>XP: <b id="profileXP">0</b></p><p>Level: <b id="profileLevel">1</b></p><p>Favourites: <b id="favCount">0</b></p></div>
+ <div class="panel">
+  <h3>My Data</h3>
+  <button onclick="backup()">Export Backup</button>
+  <button onclick="clearData()">Clear Local Data</button>
+ </div>
+ <div class="panel">
+  <h3>About ANILOD</h3>
+  <p>Anime • Gaming • Creator • ALYA AI</p>
+  <p class="small">Founded & Created by Arjun.</p>
+ </div>
 </section>
 </main>
 
-<footer>
- <div class="brand">ANILOD</div>
- <p>BEYOND THE WORLD OF ANIME</p>
- <p>WATCH • PLAY • CREATE • EXPLORE</p>
- <p>Made for anime fans. Respect creators and copyright.</p>
-</footer>
-<div id="toast"></div>
+<footer>ANILOD · FOUNDED & CREATED BY ARJUN<br>影 — YOUR ANIME UNIVERSE</footer>
 
 <script>
-const titles=[
- {name:"Naruto",genre:"Adventure",emoji:"🍥"},
- {name:"One Piece",genre:"Adventure",emoji:"🏴‍☠️"},
- {name:"Dragon Ball",genre:"Action",emoji:"🐉"},
- {name:"Demon Slayer",genre:"Action",emoji:"⚔️"},
- {name:"Jujutsu Kaisen",genre:"Fantasy",emoji:"👁️"},
- {name:"Black Clover",genre:"Fantasy",emoji:"🍀"},
- {name:"Attack on Titan",genre:"Action",emoji:"🪽"},
- {name:"My Hero Academia",genre:"Superhero",emoji:"💥"}
-];
-let xp=Number(localStorage.getItem("anilodXP")||0);
-let score=Number(localStorage.getItem("anilodScore")||0);
-let favourites=JSON.parse(localStorage.getItem("anilodFavs")||"[]");
-let posts=JSON.parse(localStorage.getItem("anilodPosts")||"[]");
-let quizIndex=0;
+const $=id=>document.getElementById(id);
+function go(id,btn){
+ document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+ $(id).classList.add('active');
+ document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
+ if(btn)btn.classList.add('active');
+ window.scrollTo(0,0);
+}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+const query=`query($search:String,$sort:[MediaSort],$status:MediaStatus){Page(perPage:20){media(type:ANIME,search:$search,sort:$sort,status:$status,isAdult:false){id title{romaji english} coverImage{large} episodes averageScore seasonYear format siteUrl description genres streamingEpisodes{title url site}}}}`;
+async function api(q,vars={}){
+ const r=await fetch('https://graphql.anilist.co',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({query:q,variables:vars})});
+ if(!r.ok)throw Error('Network error');
+ return (await r.json()).data;
+}
+function title(a){return a.title.english||a.title.romaji||'Unknown Anime'}
+function card(a){
+ return `<div class="card"><img src="${esc(a.coverImage.large)}" alt=""><div><h3>${esc(title(a))}</h3><p class="small">⭐ ${a.averageScore||'N/A'} · ${a.seasonYear||''}</p><button onclick="openAnime(${a.id})">Details</button><button onclick="toggleSave(${a.id})">＋ Save</button></div></div>`;
+}
+async function loadAnime(target,search='',sort=['TRENDING_DESC'],status=null){
+ $(target).innerHTML='<p class="muted">Loading...</p>';
+ try{
+  const d=await api(query,{search:search||null,sort,status});
+  $(target).innerHTML=d.Page.media.map(card).join('')||'No anime found.';
+ }catch(e){$(target).innerHTML='Could not load anime. Check your internet and try again.'}
+}
+function popular(){loadAnime('results')}
+function airing(){loadAnime('results','',['POPULARITY_DESC'],'RELEASING')}
+function searchAnime(){loadAnime('results',$('search').value.trim(),['SEARCH_MATCH'])}
+async function openAnime(id){
+ $('details').innerHTML='<div class="panel">Loading details...</div>';
+ try{
+  const d=await api(`query($id:Int){Media(id:$id,type:ANIME){id title{romaji english} coverImage{large} episodes averageScore seasonYear format siteUrl description genres streamingEpisodes{title url site}}}`,{id});
+  const a=d.Media;
+  const eps=a.streamingEpisodes||[];
+  $('details').innerHTML=`<div class="panel"><div class="detail"><img src="${esc(a.coverImage.large)}"><div><h2>${esc(title(a))}</h2><p class="small">${esc(a.format||'')} · ${a.episodes||'?'} episodes · Score ${a.averageScore||'N/A'}</p><p>${esc((a.description||'No description available').replace(/<[^>]*>/g,''))}</p><p>${a.genres.map(x=>'<span class="small">'+esc(x)+' · </span>').join('')}</p><a href="${esc(a.siteUrl)}" target="_blank">AniList Details ↗</a><br><br><button onclick="toggleSave(${a.id})">＋ Add to Watchlist</button></div></div><h3>Episode References</h3>${eps.length?eps.map((e,i)=>`<p>${esc(e.title||'Episode '+(i+1))} — <a href="${esc(e.url)}" target="_blank">Open ↗</a></p>`).join(''):'No episode references available. Check official platforms in Watch Zone.'}</div>`;
+ }catch(e){$('details').innerHTML='Could not load details.'}
+}
+function getSaved(){try{return JSON.parse(localStorage.getItem('anilod_saved')||'[]')}catch{return []}}
+function toggleSave(id){
+ let s=getSaved();
+ s=s.includes(id)?s.filter(x=>x!==id):[...s,id];
+ localStorage.setItem('anilod_saved',JSON.stringify(s));
+ renderSaved();
+}
+async function renderSaved(){
+ const s=getSaved();$('count').textContent=s.length;
+ if(!s.length){$('saved').innerHTML='No saved anime yet.';return}
+ try{
+  const d=await api(`query($ids:[Int]){Page(perPage:50){media(id_in:$ids,type:ANIME,isAdult:false){id title{romaji english} coverImage{large} averageScore seasonYear}}}`,{ids:s});
+  $('saved').innerHTML=d.Page.media.map(card).join('');
+ }catch{$('saved').textContent='Could not load watchlist.'}
+}
+function showSaved(){go('home');$('saved').scrollIntoView({behavior:'smooth'})}
+function playVideo(){
+ try{
+  const u=new URL($('videoURL').value);
+  if(!['https:','http:'].includes(u.protocol))throw 0;
+  $('player').src=u.href;$('player').style.display='block';$('player').load();
+ }catch{alert('Enter a valid video URL.')}
+}
 const questions=[
- {q:"Which anime features Naruto?",a:["One Piece","Naruto","Bleach"],correct:1},
- {q:"Which character is known as the Pirate King in the making?",a:["Luffy","Goku","Asta"],correct:0},
- {q:"Which anime features a notebook with supernatural powers?",a:["Death Note","Haikyuu","Blue Lock"],correct:0},
- {q:"Which anime features a character named Asta?",a:["Black Clover","Naruto","One Piece"],correct:0}
+ ['Which village is Naruto from?',['Hidden Leaf','Hidden Sand','Hidden Mist'],0],
+ ['Who leads the Straw Hat crew?',['Zoro','Luffy','Sanji'],1],
+ ['What is Tanjiro’s sister called?',['Nezuko','Sakura','Mikasa'],0],
+ ['Which notebook is central to Death Note?',['Soul Book','Death Note','Black Book'],1],
+ ['What is Asta’s goal?',['Pirate King','Hokage','Wizard King'],2]
 ];
-function enterSite(){document.getElementById("intro").style.opacity="0";setTimeout(()=>document.getElementById("intro").style.display="none",800);sessionStorage.setItem("anilodEntered","yes")}
-if(sessionStorage.getItem("anilodEntered"))document.getElementById("intro").style.display="none";
-function showPage(id,button){
- document.querySelectorAll("main section").forEach(s=>s.classList.remove("active"));
- document.getElementById(id).classList.add("active");
- document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
- if(button)button.classList.add("active");
- window.scrollTo(0,0);updateStats();
-}
-function toast(msg){let t=document.getElementById("toast");t.textContent=msg;t.style.display="block";setTimeout(()=>t.style.display="none",2200)}
-function renderAnime(list=titles){
- document.getElementById("animeGrid").innerHTML=list.map(a=>`
- <div class="card"><div class="poster">${a.emoji}</div><h3>${a.name}</h3><p>${a.genre}</p>
- <button class="btn" onclick="toggleFav('${a.name}')">${favourites.includes(a.name)?"★ Saved":"☆ Favourite"}</button></div>`).join("")||"<p>No titles found.</p>";
-}
-function filterAnime(){let q=document.getElementById("animeSearch").value.toLowerCase();renderAnime(titles.filter(a=>a.name.toLowerCase().includes(q)||a.genre.toLowerCase().includes(q)))}
-function toggleFav(name){favourites=favourites.includes(name)?favourites.filter(x=>x!==name):[...favourites,name];localStorage.setItem("anilodFavs",JSON.stringify(favourites));filterAnime();updateStats();toast("Favourite list updated")}
-function updateStats(){
- document.getElementById("xp").textContent=xp;
- document.getElementById("level").textContent=Math.floor(xp/100)+1;
- document.getElementById("score").textContent=score;
- document.getElementById("profileXP").textContent=xp;
- document.getElementById("profileLevel").textContent=Math.floor(xp/100)+1;
- document.getElementById("favCount").textContent=favourites.length;
-}
-function loadQuestion(){
- let q=questions[quizIndex%questions.length];
- document.getElementById("question").textContent=q.q;
- document.getElementById("answers").innerHTML=q.a.map((a,i)=>`<button class="btn secondary" style="margin:4px" onclick="answer(${i})">${a}</button>`).join("");
+let qi=0,score=0;
+function renderQuiz(){
+ const q=questions[qi];$('question').textContent=q[0];
+ $('options').innerHTML=q[1].map((x,i)=>`<button onclick="answer(${i})">${x}</button>`).join(' ');
+ $('quizResult').textContent='';
 }
 function answer(i){
- let q=questions[quizIndex%questions.length];
- if(i===q.correct){score++;xp+=10;localStorage.setItem("anilodScore",score);localStorage.setItem("anilodXP",xp);document.getElementById("quizResult").textContent="Correct! +10 XP";}
- else document.getElementById("quizResult").textContent="Not quite! Try the next question.";
- quizIndex++;loadQuestion();updateStats();
+ const q=questions[qi];
+ $('quizResult').textContent=i===q[2]?'Correct! 🔥':'Not quite! Answer: '+q[1][q[2]];
+ if(i===q[2])score++;
+ $('score').textContent=score;
+ document.querySelectorAll('#options button').forEach(b=>b.disabled=true);
 }
-function completeQuest(){
- if(localStorage.getItem("anilodQuest")===new Date().toDateString()){toast("Quest already completed today!");return}
- xp+=10;localStorage.setItem("anilodXP",xp);localStorage.setItem("anilodQuest",new Date().toDateString());document.getElementById("questStatus").textContent="Quest completed! +10 XP";updateStats();
+function nextQuestion(){qi=(qi+1)%questions.length;renderQuiz()}
+const chars=['Naruto','Sasuke','Luffy','Zoro','Ichigo','Gojo','Tanjiro','Asta','Yuno','Levi','Mikasa','Kakashi'];
+let team=[];
+function draft(){
+ const c=chars[Math.floor(Math.random()*chars.length)];
+ team.push(c);$('draft').textContent='⚔ '+c;
+ $('team').textContent='Your team: '+team.join(' · ');
 }
-function searchWeb(){
- let q=document.getElementById("exploreSearch").value.trim();
- if(q)window.open("https://www.google.com/search?q="+encodeURIComponent(q+" anime"),"_blank");
-}
-function publishPost(){
- let name=document.getElementById("creatorName").value.trim();
- let title=document.getElementById("postTitle").value.trim();
- let body=document.getElementById("postText").value.trim();
- if(!name||!title||!body){toast("Fill in all fields first");return}
- posts.unshift({name,title,body});
- localStorage.setItem("anilodPosts",JSON.stringify(posts));
- document.getElementById("postTitle").value="";
- document.getElementById("postText").value="";
- renderPosts();toast("Your post was saved on this device!");
+function resetDraft(){team=[];$('draft').textContent='Your first character awaits...';$('team').textContent=''}
+function getPosts(){try{return JSON.parse(localStorage.getItem('anilod_posts')||'[]')}catch{return []}}
+function addPost(){
+ const t=$('postTitle').value.trim(),b=$('postBody').value.trim();
+ if(!t||!b){alert('Enter a title and post.');return}
+ const p=getPosts();p.unshift({t,b,date:new Date().toLocaleString()});
+ localStorage.setItem('anilod_posts',JSON.stringify(p));
+ $('postTitle').value='';$('postBody').value='';renderPosts();
 }
 function renderPosts(){
- document.getElementById("posts").innerHTML=posts.map(p=>`<div class="panel"><div class="tag">${escapeText(p.name)}</div><h3>${escapeText(p.title)}</h3><p class="muted">${escapeText(p.body)}</p></div>`).join("")||'<p class="muted">No posts yet. Be the first creator!</p>';
+ const p=getPosts();
+ $('posts').innerHTML=p.map((x,i)=>`<div class="panel"><h3>${esc(x.t)}</h3><p>${esc(x.b)}</p><p class="small">${esc(x.date)}</p><button onclick="deletePost(${i})">Delete</button></div>`).join('')||'No posts yet.';
 }
-function escapeText(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function deletePost(i){const p=getPosts();p.splice(i,1);localStorage.setItem('anilod_posts',JSON.stringify(p));renderPosts()}
 function saveProfile(){
- localStorage.setItem("anilodName",document.getElementById("profileName").value);
- localStorage.setItem("anilodBio",document.getElementById("profileBio").value);
- document.getElementById("profileStatus").textContent="Profile saved on this device!";
+ localStorage.setItem('anilod_profile',JSON.stringify({name:$('name').value,bio:$('bio').value}));
+ $('profileStatus').textContent='Profile saved on this device.';
 }
-document.getElementById("profileName").value=localStorage.getItem("anilodName")||"";
-document.getElementById("profileBio").value=localStorage.getItem("anilodBio")||"";
-renderAnime();renderPosts();loadQuestion();updateStats();
+function loadProfile(){
+ try{const p=JSON.parse(localStorage.getItem('anilod_profile')||'{}');$('name').value=p.name||'';$('bio').value=p.bio||''}catch{}
+}
+function backup(){
+ const data={watchlist:getSaved(),posts:getPosts(),profile:JSON.parse(localStorage.getItem('anilod_profile')||'{}')};
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.download='anilod-backup.json';a.click();
+}
+function clearData(){
+ if(!confirm('Delete your saved ANILOD data from this browser?'))return;
+ ['anilod_saved','anilod_posts','anilod_profile'].forEach(k=>localStorage.removeItem(k));
+ renderSaved();renderPosts();loadProfile();
+}
+function settings(){
+ const u=localStorage.getItem('anilod_worker')||'';
+ $('workerURL').value=u;
+}
+function saveWorker(){
+ const u=$('workerURL').value.trim().replace(/\/+$/,'');
+ if(u&&!u.startsWith('https://')){alert('Use an HTTPS backend URL.');return}
+ localStorage.setItem('anilod_worker',u);
+ checkAI();
+}
+async function checkAI(){
+ const u=localStorage.getItem('anilod_worker')||'';
+ if(!u){$('aiStatus').textContent='AI backend not connected.';return}
+ try{const r=await fetch(u+'/health');$('aiStatus').textContent=r.ok?'AI backend connected.':'Backend unavailable.'}
+ catch{$('aiStatus').textContent='Could not reach backend.'}
+}
+function bubble(t,who){
+ const d=document.createElement('div');d.className='msg '+who;d.textContent=t;
+ $('chatlog').appendChild(d);$('chatlog').scrollTop=$('chatlog').scrollHeight;return d;
+}
+async function send(){
+ const input=$('chatInput'),message=input.value.trim();if(!message)return;
+ input.value='';bubble(message,'user');
+ const u=localStorage.getItem('anilod_worker')||'';
+ if(!u){bubble('ALYA is ready, but the secure AI backend is not connected. Add your deployed backend URL in the settings below. Never put your API key here.','bot');return}
+ const pending=bubble('ALYA is thinking...','bot');
+ try{
+  const r=await fetch(u+'/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message,mode:$('mode').value})});
+  const j=await r.json();pending.textContent=r.ok?(j.reply||'No response received.'):('Error: '+(j.error||'Request failed'));
+ }catch{pending.textContent='Could not connect. Check your internet and backend URL.'}
+}
+function clearChat(){$('chatlog').innerHTML='<div class="msg">Chat cleared. What shall we explore?</div>'}
+function voice(){
+ const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!SR){alert('Voice input is not supported in this browser.');return}
+ const r=new SR();r.lang='en-IN';
+ r.onresult=e=>$('chatInput').value=e.results[0][0].transcript;
+ r.start();
+}
+renderQuiz();renderSaved();renderPosts();loadProfile();popular();checkAI();
 </script>
 </body>
-</html>
+   </html>
